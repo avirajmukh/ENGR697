@@ -7,12 +7,14 @@ file_check = False
 dir_check = False
 
 def select_file():
+    global filename
     filename =  filedialog.askopenfilename(initialdir = "C:\\", title = "Select file")
     curr_file.value = "Current file: " + filename
     global file_check
     file_check = True
 
 def select_dir():
+    global directory
     directory =  filedialog.askdirectory()
     curr_dir.value = "Current directory " + directory
     global dir_check
@@ -21,15 +23,11 @@ def select_dir():
 def use_rsync():
     if (file_check and dir_check):
         sync_text.value = "File sent to destination"
-        run(["ls", "-l"])
-#        args = "-urv " + filename + " " + directory
-#        run(["rsync", args])
-#        print(file_check)
-#        print(dir_check)
+        args = ["rsync", filename, directory]
+        print(args)
+        call(args)
     else:
         sync_text.value = "Please select a source file and destination folder"
-#        print(file_check)
-#        print(dir_check)
 
 app = App(title="USB Transfer Device", width=480, height=320) 
 #   480x320 should be the resolution of the touch screen)
