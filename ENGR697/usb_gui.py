@@ -40,6 +40,8 @@ def use_rsync():
 def on_escape(event=None):
     print("Exiting program")
     app.tk.destroy()
+
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 # GUI section
 # ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,33 +50,8 @@ master = Tk()
 master.geometry("480x320")
 master.title("File Transfer Device")
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~
-# different frames
-# ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-# frame4 = Frame(master)
-# frame4.config(bg="white")
-# frame4.pack(fill=BOTH, expand=TRUE, side=TOP)
-
-# frame1 = Frame(master)
-# frame1.config(bg="white")
-# frame1.pack(fill=BOTH, expand=TRUE, side=LEFT)
-
-# frame2 = Frame(master)
-# frame2.config(bg="white")
-# frame2.pack(fill=BOTH, expand=TRUE, side=RIGHT)
-
-# frame3 = Frame(master)
-# frame3.config(bg="white")
-# frame3.pack(fill=BOTH, expand=TRUE, side=BOTTOM)
-
-# frame5 = Frame(master)
-# frame5.config(bg="white")
-# frame5.pack(fill=BOTH, expand=TRUE, side=TOP)
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# weird tab  menu section start
+# tab menu section start
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 notebook = ttk.Notebook(master, width = 480, height = 320)
@@ -89,9 +66,8 @@ notebook.add(page4, text="Quit")
 notebook.pack()
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~
-# weird tab menu section end
+# define frames
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 frame4 = Frame(page1)
 frame4.config(bg="white")
@@ -117,7 +93,6 @@ frame6 = Frame(page2)
 frame6.config(bg="white")
 frame6.pack(fill=BOTH, expand=TRUE, side=TOP)
 
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 # creating buttons
 # ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,28 +109,16 @@ selDirButton.pack()
 selSyncButton = Button(frame3, text="Synchronize files", command=use_rsync, relief=FLAT, font=("Helvetica", 17), bg="white")
 selSyncButton.pack() 
 
+welcome2 = Label(frame6, text = "List contents of directory", font = ("Helvetica", 25), bg="white")
+welcome2.pack()
 
-testButt = Button(page2, text="Butt stuff", font=("Helvetica", 25), bg="white")
+testButt = Button(frame6, text="Butt stuff", font=("Helvetica", 25), relief = FLAT, bg="white")
 testButt.pack()
 # ~~~~~~~~~~~~~~~~~~~~~~~~
-# ending button portion
+# background image
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~
-# top menu section start
-# ~~~~~~~~~~~~~~~~~~~~~~~~
-
-# menu = Menu(master)
-# master.config(menu=menu)
-# filemenu = Menu(menu)
-# menu.add_cascade(label="File", menu=filemenu)
-# filemenu.add_command(label="directory", command=select_dir)
-# filemenu.add_command(label="synchronize", command=use_rsync)
-# filemenu.add_separator()
-# filemenu.add_command(label="Exit", command=master.quit)
-
-backgroundImage = PhotoImage(file="screenshot5.png")
+backgroundImage = PhotoImage(file="background6.png")
 backgroundLabel = Label(page1, image=backgroundImage)
 backgroundLabel.place(x = 0, y = 0, relwidth = 1, relheight = 1)
 backgroundLabel.pack(fill=BOTH, expand=TRUE, side=LEFT)
