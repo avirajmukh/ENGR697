@@ -2,7 +2,8 @@ from tkinter import filedialog
 from tkinter import *
 from subprocess import call
 from tkinter import ttk
-import platform
+# Setting initial boolean values to check for the file and directory selection
+file_check = False
 dir_check = False
 
 
@@ -48,99 +49,16 @@ master = Tk()
 master.geometry("480x320")
 master.title("File Transfer Device")
 
+
+
+
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 # different frames
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-# frame4 = Frame(master)
-# frame4.config(bg="white")
-# frame4.pack(fill=BOTH, expand=TRUE, side=TOP)
-
-# frame1 = Frame(master)
-# frame1.config(bg="white")
-# frame1.pack(fill=BOTH, expand=TRUE, side=LEFT)
-
-# frame2 = Frame(master)
-# frame2.config(bg="white")
-# frame2.pack(fill=BOTH, expand=TRUE, side=RIGHT)
-
-# frame3 = Frame(master)
-# frame3.config(bg="white")
-# frame3.pack(fill=BOTH, expand=TRUE, side=BOTTOM)
-
-# frame5 = Frame(master)
-# frame5.config(bg="white")
-# frame5.pack(fill=BOTH, expand=TRUE, side=TOP)
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# weird tab  menu section start
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-notebook = ttk.Notebook(master, width = 480, height = 320)
-page1 = Frame(notebook)
-page2 = Frame(notebook)
-page3 = Frame(notebook)
-page4 = Frame(notebook)
-notebook.add(page1, text="Sync")
-notebook.add(page2, text="LS")
-notebook.add(page3, text="Tree")
-notebook.add(page4, text="Quit")
-notebook.pack()
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~
-# weird tab menu section end
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-frame4 = Frame(page1)
-frame4.config(bg="white")
-frame4.pack(fill=BOTH, expand=TRUE, side=TOP)
-
-frame1 = Frame(page1)
-frame1.config(bg="white")
-frame1.pack(fill=BOTH, expand=TRUE, side=LEFT)
-
-frame2 = Frame(page1)
-frame2.config(bg="white")
-frame2.pack(fill=BOTH, expand=TRUE, side=RIGHT)
-
-frame3 = Frame(page1)
-frame3.config(bg="white")
-frame3.pack(fill=BOTH, expand=TRUE, side=BOTTOM)
-
-frame5 = Frame(page1)
-frame5.config(bg="white")
-frame5.pack(fill=BOTH, expand=TRUE, side=TOP)
-
-frame6 = Frame(page2)
-frame6.config(bg="white")
-frame6.pack(fill=BOTH, expand=TRUE, side=TOP)
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~
-# creating buttons
-# ~~~~~~~~~~~~~~~~~~~~~~~~
-
-welcome = Label(frame4, text="Welcome to the usb696!", font=("Helvetica", 25), bg="white")
-welcome.pack()
-
-selFileButton = Button(frame1, text="Select file", command=select_file, relief=FLAT, font=("Helvetica", 17), bg="white")
-selFileButton.pack()
-
-selDirButton = Button(frame2, text="Select directory", command=select_dir, relief=FLAT, font=("Helvetica", 17), bg="white")
-selDirButton.pack()
-
-selSyncButton = Button(frame3, text="Synchronize files", command=use_rsync, relief=FLAT, font=("Helvetica", 17), bg="white")
-selSyncButton.pack() 
-
-
-testButt = Button(page2, text="Butt stuff", font=("Helvetica", 25), bg="white")
-testButt.pack()
-# ~~~~~~~~~~~~~~~~~~~~~~~~
 # ending button portion
-# ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 # top menu section start
@@ -155,8 +73,63 @@ testButt.pack()
 # filemenu.add_separator()
 # filemenu.add_command(label="Exit", command=master.quit)
 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# weird tab  menu section start
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+notebook = ttk.Notebook(master)
+notebook.pack()                  
+page1 = Frame(notebook)         
+page2 = Frame(notebook)
+
+notebook.add(page1, text="Tab 1")
+notebook.add(page2, text="Tab 2")
+notebook.pack()
+
+
+frame4 = Frame(master)
+frame4.config(bg="white")
+frame4.pack(fill=BOTH, expand=TRUE, side=TOP)
+
+frame1 = Frame(master)
+frame1.config(bg="white")
+frame1.pack(fill=BOTH, expand=TRUE, side=LEFT)
+
+frame2 = Frame(master)
+frame2.config(bg="white")
+frame2.pack(fill=BOTH, expand=TRUE, side=RIGHT)
+
+frame3 = Frame(master)
+frame3.config(bg="white")
+frame3.pack(fill=BOTH, expand=TRUE, side=BOTTOM)
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~
+# creating buttons
+# ~~~~~~~~~~~~~~~~~~~~~~~~
+
+selFileButton = Button(frame1, text="Select file", command=select_file, relief=FLAT, font=("Helvetica", 17), bg="white")
+selFileButton.pack(anchor = "w")
+
+selDirButton = Button(frame2, text="Select directory", command=select_dir, relief=FLAT, font=("Helvetica", 17), bg="white")
+selDirButton.pack(anchor = "e")
+
+selSyncButton = Button(frame3, text="Synchronize files", command=use_rsync, relief=FLAT, font=("Helvetica", 17), bg="white")
+selSyncButton.pack(side=BOTTOM) 
+
+welcome = Label(frame4, text="Welcome to the usb696!", font=("Helvetica", 25), bg="white")
+welcome.pack(side=TOP)
+
+selFileButton = Button(frame1, text="Select file", command=select_file, relief=FLAT, font=("Helvetica", 17), bg="white")
+selFileButton.pack(anchor = "w")
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~
+# weird tab menu section end
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 backgroundImage = PhotoImage(file="screenshot5.png")
-backgroundLabel = Label(page1, image=backgroundImage)
+backgroundLabel = Label(master, image=backgroundImage)
 backgroundLabel.place(x = 0, y = 0, relwidth = 1, relheight = 1)
 backgroundLabel.pack(fill=BOTH, expand=TRUE, side=LEFT)
+
 mainloop()
